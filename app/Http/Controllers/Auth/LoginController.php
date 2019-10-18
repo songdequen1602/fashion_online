@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     /*
@@ -20,20 +22,19 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
+    public function loginForm(){
+        return view('auth.login');
+    }
+    
+    public function postLogin(UserRequest $request){
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password]) ){
+            return redirect('/homepage');
+        }
+            return redirect()->route('login')->with('errmsg', 'Sai thông tin tài khoản/mật khẩu123');
+    }
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
+     public function logout(){
+        Auth::logout();
+        return redirect()->route('login');
     }
 }

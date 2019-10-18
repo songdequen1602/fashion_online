@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -39,7 +39,9 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
-        //
+        //mới bị thay xong ngày 5-8-2019 update vao
+        $this->mapProductRoutes();
+
     }
 
     /**
@@ -54,6 +56,14 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
              ->namespace($this->namespace)
              ->group(base_path('routes/web.php'));
+    }
+
+    protected function mapProductRoutes()
+    {
+        Route::middleware('web','auth')
+             ->prefix('admin/products')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/products.php'));
     }
 
     /**
