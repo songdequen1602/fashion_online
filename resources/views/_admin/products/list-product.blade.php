@@ -53,12 +53,13 @@
 
       </td>
       <td>
-          @if($bv->status=0)
-          <a href="{{route('product.update',$bv->id)}}" class="btn btn-xs btn-danger">Hết hàng </a>
-           @else
-          <a href="{{route('product.update',$bv->id)}}" class="btn btn-xs btn-primary" style="">Còn hàng</a>
+          @if($bv->status==0)
+          <a href="{{route('product.update',['id' => $bv->id])}}" class="btn btn-xs btn-danger">Hết hàng </a>
+          @else
+          <a href="{{route('product.update',['id' => $bv->id])}}" class="btn btn-xs btn-primary" style="">Còn hàng</a>
           @endif
       </td>
+      
       
       <td>
         @if(Auth::user()->role_id >= 500)

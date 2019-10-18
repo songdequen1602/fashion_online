@@ -25,7 +25,19 @@ Route::group(['middleware' => 'auth'], function(){
         return redirect(route('home'));
 	})->name('product.update');
 	
-
+	//status chuyển trạng thái
+	Route::get('/products', function(Request $request){
+		$flight = Product::find($request->id);
+		
+		if($flight->status == 0){
+			$flight->status = 1;
+        }
+        else{
+			$flight->status = 0;
+		}
+		$flight->save();
+        return redirect(route('home'));
+		})->name('product.update');
 });
 
  ?>
