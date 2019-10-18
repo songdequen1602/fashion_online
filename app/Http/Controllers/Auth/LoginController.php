@@ -28,7 +28,7 @@ class LoginController extends Controller
     
     public function postLogin(UserRequest $request){
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password]) ){
-            return redirect('/homepage');
+            return redirect('/admin');
         }
             return redirect()->route('login')->with('errmsg', 'Sai thông tin tài khoản/mật khẩu123');
     }

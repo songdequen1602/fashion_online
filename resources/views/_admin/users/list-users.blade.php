@@ -43,7 +43,7 @@
 						<td>
 							<img src="{{$bv->avatar}}" width="70">
 						</td>
-						<td>
+						
 						<td>
 							@if($bv->role_id==500)
 							<p>Admin</p>
