@@ -7,7 +7,6 @@ use App\Category;
 use App\Comments;
 class SingerController extends Controller
 {
-   
      public function hienthi($id){
         $model = new Settings();
         $settings = Settings::first();

@@ -24,7 +24,6 @@ class UserController extends Controller
 				'user'=>$user
 			]);
  	}
-
  	public function addNew(){
     	$model = new User();
     	// $authors = User::all();
