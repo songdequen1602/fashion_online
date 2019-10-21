@@ -18,11 +18,11 @@
       <!-- sidebar: style can be found in sidebar.less -->
       <section class="sidebar">
         <!-- Sidebar user panel -->
-        <div class="user-panel">
+        <div class="user-panel" style="height: 50px">
           <div class="pull-left image">
             <img src="{{url('/')}}/{{Auth::user()->avatar}}" class="img-circle" alt="User Image">
           </div>
-          <div class="pull-left info">
+          <div class="pull-left info h-3">
             <p>{{Auth::user()->name}}</p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>

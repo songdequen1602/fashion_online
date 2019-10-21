@@ -12,6 +12,7 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::post('edit/{id}', 'ProductController@saveEdit');
 		//xóa\
 		Route::get('xoa/{id}','ProductController@XoaPost')->name('deleteproduct');
+		Route::post('dev', 'ProductController@xoaAll')->name('deleteall');
 	});
 	Route::get('/products', function(Request $request){
 		$flight = Product::find($request->id);

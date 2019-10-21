@@ -22,6 +22,7 @@
 <table class="table table-striped table-dark">
   <thead>
     <tr>
+      <th scope="col-2"></th>
       <th scope="col-2">Id </th>
       <th scope="col-2">name</th>
       <th scope="col-2">image</th>
@@ -40,8 +41,12 @@
 
   </thead>
   <tbody>
-    @foreach($baiviet as $bv)
+    <form action="{{route('deleteall')}}" method="post">
+      @csrf
+    @if(count($baiviet)>0)
+    @foreach($baiviet->all() as $bv) 
     <tr>
+      <td><input type="checkbox" name="check[]" value="{{$all=$bv->id}}"  class="checkbox" ></td>
       <th scope="row">{{$bv->id}}</th>
       <td>{{$bv->name}}</td>
       <td><img src="{{$bv->image}}" width="100px"></td>
@@ -71,11 +76,18 @@
         <a href="javascript:;" linkurl="{{route('deleteproduct',$bv->id)}}" class="btn btn-danger btn-remove");">Xóa</a>
         @endif
       </td>
-      @endforeach
-      <tr>
-        <td colspan="7" class="text-center">{{$baiviet->links()}}</td>
-      </tr>    
+      @endforeach    
+      @endif
     </tr>
+    <tr>
+        <td style="width: 100px;"><input type="checkbox" name="check" value="{{$all}}" id="select_all"/> Chọn tất cả</td>
+        <td class="text-center"><input type="submit" class="btn btn-danger" name="" value="Xóa"></td>
+    </tr>
+    </form>
+     <tr>
+        <td colspan="12" class="text-center">{{$baiviet->links()}}</td>
+    </tr>
+
   </tbody>
 
 </table>
@@ -84,7 +96,26 @@
     color: #ffffff;
   }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+  $("#select_all").change(function(){  //"select all" change 
+    var status = this.checked; // "select all" checked status
+    $('.checkbox').each(function(){ //iterate all listed checkbox items
+        this.checked = status; //change ".checkbox" checked status
+    });
+});
 
+$('.checkbox').change(function(){ //".checkbox" change 
+    //uncheck "select all", if one of the listed checkbox item is unchecked
+    if(this.checked == false){ //if this item is unchecked
+        $("#select_all")[0].checked = false; //change "select all" checked status to false
+    }
+    //check "select all" if all checkbox items are checked
+    if ($('.checkbox:checked').length == $('.checkbox').length ){ 
+        $("#select_all")[0].checked = true; //change "select all" checked status to true
+    }
+});
+</script>
 
 </body>
 </html>

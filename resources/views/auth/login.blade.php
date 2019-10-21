@@ -27,6 +27,7 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -47,12 +48,14 @@
           <span class="text-danger"style="color: red">{{$errors->first('email')}}</span>
           @endif  
       </div>
-      <div class="form-group has-feedback">
-        <input type="password" name="password" class="form-control" placeholder="Password">
+      <div class="input-group">
+       <input type="password" name="password" class="form-control password" placeholder="Password">
           @if($errors->first('password'))
           <span class="text-danger"style="color: red">{{$errors->first('password')}}</span>
           @endif
-      </div>
+       <span class="input-group-addon icon"><i class="fas fa-eye"></i></span>
+        </div>
+        <br>
       <div class="row">
         <div class="col-xs-8">
           <div class="checkbox icheck">
@@ -88,6 +91,13 @@
       increaseArea: '20%' /* optional */
     });
   });
+</script>
+<script type="text/javascript">
+  $('.icon').hover(function () {
+   $('.password').attr('type', 'text'); 
+}, function () {
+   $('.password').attr('type', 'password'); 
+});
 </script>
 </body>
 </html>

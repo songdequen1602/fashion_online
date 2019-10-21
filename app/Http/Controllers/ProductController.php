@@ -101,8 +101,13 @@ class ProductController extends Controller
     //xoa
      public function XoaPost($id){
             $comment= Comments::first();
-
             $post= Product::where($id,'=',$comment->product_id)->delete();
+            return redirect(route('home')); 
+    }
+     public function xoaAll(Request $request){
+            $delid= $request->input('check');
+            $comment= Comments::first();
+            $post= Product::where("id", $delid)->delete();
             return redirect(route('home')); 
     }
 }
