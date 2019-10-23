@@ -106,8 +106,7 @@ class ProductController extends Controller
     }
      public function xoaAll(Request $request){
             $delid= $request->input('check');
-            $comment= Comments::first();
-            $post= Product::where("id", $delid)->delete();
+            $product= Product::where("id", $delid)->delete();
             return redirect(route('home')); 
     }
 }

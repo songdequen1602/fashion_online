@@ -46,7 +46,7 @@
     @if(count($baiviet)>0)
     @foreach($baiviet->all() as $bv) 
     <tr>
-      <td><input type="checkbox" name="check[]" value="{{$all=$bv->id}}"  class="checkbox" ></td>
+      <td><input type="checkbox" name="check" value="{{$all=$bv->id}}"  class="checkbox" ></td>
       <th scope="row">{{$bv->id}}</th>
       <td>{{$bv->name}}</td>
       <td><img src="{{$bv->image}}" width="100px"></td>

@@ -109,3 +109,8 @@ Route::post('cp-login', 'Auth\LoginController@postLogin');
 Route::any('logout', 'Auth\LoginController@logout')->name('logout');
 
 
+Route::get('/import',function(){
+	return view('import');
+});
+Route::get('/import','ImportExcelController@index');
+Route::post('/import','ImportExcelController@import')->name('import');

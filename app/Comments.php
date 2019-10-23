@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Migrations\Migration;
 class Comments extends Model
 {
    protected $table = 'comments';
